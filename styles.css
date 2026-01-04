@@ -4,5 +4,186 @@ This CSS file will be included with your plugin, and
 available in the app when your plugin is enabled.
 
 If your plugin does not need CSS, delete this file.
-
+TODO: Update this to use default Obsidian CSS variables where possible, https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines#Styling
 */
+
+/* --- Grid container --- */
+.recipe-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+    padding: 12px;
+}
+
+/* Card background for cook-soon items */
+.recipe-card.cook-soon-active {
+    background-color: #a079d620; /* light purple */
+    border: 2px solid #895dcac3; /* optional: purple border */
+}
+
+
+/* --- Recipe Card --- */
+.recipe-card {
+    background-color: #2a2a2a;       /* Dark gray background */
+    border: 1px solid #444;          /* Neutral border */
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+/* Card hover effect */
+.recipe-card:hover {
+    border-color: #9C88FF;           /* Obsidian purple border */
+    box-shadow: 0 4px 10px rgba(156, 136, 255, 0.3); /* subtle purple glow */
+}
+
+/* Image styling */
+.recipe-card img.recipe-thumb {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    margin-bottom: 8px;
+}
+
+/* Title */
+.recipe-card h3 {
+    margin: 6px 0 12px 0;
+    text-align: center;
+    color: #fff;
+}
+
+/* --- Toggle Buttons --- */
+.recipe-card .toggle-btn {
+    background-color: #9C88FF;   /* Obsidian purple */
+    color: white;
+    border: 2px solid #7B61FF;
+    border-radius: 6px;
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* Hover state for buttons */
+.recipe-card .toggle-btn:hover {
+    background-color: #7B61FF;
+    border-color: #9C88FF;
+}
+
+/* Active / toggled state */
+.recipe-card .toggle-btn.active {
+    background-color: #5F3DFF;
+    border-color: #7B61FF;
+}
+
+
+.centered-button {
+    text-align: center;           /* center horizontally */
+    margin: 1em 0;                /* vertical spacing */
+}
+
+.centered-button .internal-button {
+    background-color: #7c5ac5;   /* Obsidian purple */
+    color: white;                 /* text color */
+    padding: 0.5em 1.2em;        /* button padding */
+    border-radius: 6px;           /* rounded corners */
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.centered-button .internal-button:hover {
+    background-color: #9c7fe0;   /* lighter purple on hover */
+    transform: scale(1.05);
+}
+
+/* --- Filter Dropdown --- */
+.filter-panel > summary {
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.2rem 0;
+}
+
+.clear-filters-btn {
+    padding: 6px 12px;
+    margin-top: 8px;
+    border: 1px solid var(--interactive-accent);
+    background-color: var(--background-secondary);
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.clear-filters-btn:hover {
+    background-color: var(--background-primary);
+}
+
+/* Cookbook Menu Styles */
+.cookbook-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    background-color: var(--background-primary);
+    color: var(--text-normal);
+}
+
+.cookbook-menu h2 {
+    color: var(--text-normal);
+    margin: 0 0 10px 0;
+}
+
+.cookbook-menu h3 {
+    color: var(--text-normal);
+    margin: 20px 0 10px 0;
+}
+
+.cookbook-menu ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin: 0;
+}
+
+.cookbook-menu li {
+    margin: 5px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cookbook-menu .toggle-btn {
+    background-color: var(--interactive-accent);
+    color: var(--text-on-accent);
+    border: none;
+    border-radius: var(--radius-s);
+    padding: 4px 8px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.cookbook-menu .toggle-btn:hover {
+    background-color: var(--interactive-accent-hover);
+}
+
+.cookbook-menu p {
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+.cookbook-menu button {
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: var(--interactive-normal);
+    color: var(--text-on-accent);
+    border: 1px solid var(--background-modifier-border);
+    border-radius: var(--radius-s);
+    transition: background-color 0.2s ease;
+}
+
+.cookbook-menu button:hover {
+    background-color: var(--interactive-hover);
+}

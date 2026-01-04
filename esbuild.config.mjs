@@ -1,3 +1,5 @@
+import esbuildSvelte from "esbuild-svelte";
+import { sveltePreprocess } from "svelte-preprocess";
 import esbuild from "esbuild";
 import process from "process";
 import { builtinModules } from 'node:module';
@@ -17,6 +19,14 @@ const context = await esbuild.context({
 	},
 	entryPoints: ["src/main.ts"],
 	bundle: true,
+	plugins: [
+		esbuildSvelte({
+			// Svelte compiler removed boolean css option. Use 'injected' to
+			// inline component CSS into the JS bundle (previously `css: true`).
+			compilerOptions: { css: 'injected' },
+			preprocess: sveltePreprocess(),
+		}),
+   ],
 	external: [
 		"obsidian",
 		"electron",
